@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculos Sistema Radio Frecuencia</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          }
+        };
+        </script>
+       
+</head>
+
+<body>
+    <div class="container" id="formula-1">
+        <div class="row">
+            <div class="col-18">
+                <div class="firstFormula">
+                    <h1 class="large">Cálculo Valores del filtro</h1>
+                    <p class="latex">$2\sin{\frac{(2k-1)\pi}{2n}}, k=1,2,...n$</p>
+                    <form id="Butterworth">
+                        <h2 class="large">Número de elementos</h2>
+                        <input class="inputbox" type="text" id="n" placeholder="N o cantidad de elementos">
+                        <button type="submit">Calcular</button>
+                        <h3 id="resultField">El elemento K vale X </h3>
+                        <script src="/js/app.js"></script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
