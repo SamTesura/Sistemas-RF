@@ -51,6 +51,12 @@
     --duration-fast: 0.3s;
     --duration-normal: 0.6s;
     --duration-slow: 0.8s;
+    --anim-fast: 0.3s;
+    --anim-medium: 0.6s;
+
+    /* Easing Functions */
+    --ease-standard: ease;
+    --ease-smooth: ease-in-out;
 
     /* Transitions */
     --transition-base: all 0.3s ease;
@@ -59,7 +65,7 @@
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
     line-height: 1.6;
-    background: var(--primary-dark);
+    background: var(--primary-dark, #0a0e1a);
     color: #ffffff;
     overflow-x: hidden;
     min-height: 100vh;
@@ -228,7 +234,7 @@ body {
 /* ==================== MAIN CONTAINER ==================== */
 
 #formula-1 {
-    background: var(--gradient-card);
+    background: var(--gradient-card, linear-gradient(135deg, rgba(20, 24, 34, 0.95) 0%, rgba(20, 30, 48, 0.95) 100%));
     backdrop-filter: blur(20px);
     width: 100%;
     max-width: 700px;
@@ -236,7 +242,7 @@ body {
     padding: 50px;
     border-radius: 24px;
     border: 1px solid rgba(0, 212, 255, 0.2);
-    box-shadow: var(--shadow-card), var(--shadow-neon);
+    box-shadow: var(--shadow-card, 0 25px 50px rgba(0, 0, 0, 0.6)), var(--shadow-neon, 0 0 15px rgba(0, 212, 255, 0.5));
     position: relative;
     overflow: hidden;
     animation: slideIn 0.8s ease-out;
@@ -395,11 +401,11 @@ h1.large {
     background: rgba(0, 0, 0, 0.4);
     /* Fallback border for browsers that do not support border-image */
     border: 2px solid #8b5cf6;
-    border-image: var(--gradient-rf);
+    border-image: var(--gradient-rf, linear-gradient(135deg, #00d4ff 0%, #7000ff 50%, #ff0080 100%));
     border-image-slice: 1;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
+    border-radius: var(--radius-lg, 16px);
+    padding: var(--spacing-lg, 25px);
+    margin: var(--spacing-lg, 25px) 0;
     box-shadow: 0 0 30px rgba(0, 212, 255, 0.15),
                 inset 0 0 20px rgba(0, 212, 255, 0.05);
     position: relative;
@@ -483,12 +489,15 @@ form h2 {
 input[type="number"] {
     width: 100%;
     font-size: 18px;
-    padding: 16px var(--spacing-md) 16px 55px;
-    border-radius: var(--radius-sm);
+    padding: 16px var(--spacing-md, 20px) 16px 55px;
+    border-radius: var(--radius-sm, 10px);
     border: 2px solid rgba(0, 212, 255, 0.3);
     background: rgba(0, 0, 0, 0.5);
     color: #ffffff;
-    transition: all var(--anim-fast) var(--ease-standard);
+    transition: border-color var(--anim-fast, 0.3s) var(--ease-standard, ease),
+                box-shadow var(--anim-fast, 0.3s) var(--ease-standard, ease),
+                transform var(--anim-fast, 0.3s) var(--ease-standard, ease),
+                background var(--anim-fast, 0.3s) var(--ease-standard, ease);
     font-weight: 500;
 }
 
@@ -507,12 +516,12 @@ input[type="number"]::placeholder {
 /* Input Validation Messages */
 .input-validation {
     display: none;
-    margin-top: var(--spacing-sm);
-    padding: var(--spacing-sm) 18px;
-    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-sm, 10px);
+    padding: var(--spacing-sm, 10px) 18px;
+    border-radius: var(--radius-sm, 10px);
     font-size: 13px;
     font-weight: 500;
-    animation: slideDown var(--anim-fast) var(--ease-standard);
+    animation: slideDown var(--anim-fast, 0.3s) var(--ease-standard, ease);
 }
 
 @keyframes slideDown {
@@ -545,17 +554,18 @@ input[type="number"]::placeholder {
     font-size: 18px;
     font-weight: 700;
     color: #ffffff;
-    background: var(--gradient-rf);
-    padding: 18px var(--spacing-xl);
+    background: var(--gradient-rf, linear-gradient(135deg, #00d4ff 0%, #7000ff 50%, #ff0080 100%));
+    padding: 18px var(--spacing-xl, 35px);
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md, 12px);
     cursor: pointer;
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-lg, 25px) 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-sm);
-    transition: all var(--anim-fast) var(--ease-standard);
+    gap: var(--spacing-sm, 10px);
+    transition: transform var(--anim-fast, 0.3s) var(--ease-standard, ease),
+                box-shadow var(--anim-fast, 0.3s) var(--ease-standard, ease);
     box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3),
                 0 0 40px rgba(112, 0, 255, 0.2);
     position: relative;
@@ -605,10 +615,10 @@ input[type="number"]::placeholder {
 /* ==================== RESULTS SECTION ==================== */
 
 .result-container {
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-xl, 35px);
     background: rgba(0, 0, 0, 0.4);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg, 16px);
+    padding: var(--spacing-lg, 25px);
     border: 1px solid rgba(0, 212, 255, 0.2);
     box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.05);
 }
@@ -640,16 +650,20 @@ input[type="number"]::placeholder {
 
 .result-item {
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(112, 0, 255, 0.08) 100%);
-    border-left: 3px solid var(--rf-blue);
-    padding: 16px var(--spacing-md);
-    margin: var(--spacing-sm) 0;
-    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--rf-blue, #00d4ff);
+    padding: 16px var(--spacing-md, 20px);
+    margin: var(--spacing-sm, 10px) 0;
+    border-radius: var(--radius-sm, 10px);
     display: flex;
     align-items: center;
     gap: 15px;
     opacity: 0;
     transform: translateX(-30px);
-    transition: all var(--anim-medium) var(--ease-smooth);
+    transition: opacity var(--anim-medium, 0.6s) var(--ease-smooth, ease-in-out),
+                transform var(--anim-medium, 0.6s) var(--ease-smooth, ease-in-out),
+                background var(--anim-medium, 0.6s) var(--ease-smooth, ease-in-out),
+                border-left-color var(--anim-medium, 0.6s) var(--ease-smooth, ease-in-out),
+                box-shadow var(--anim-medium, 0.6s) var(--ease-smooth, ease-in-out);
 }
 
 .result-item.show {
@@ -679,25 +693,27 @@ input[type="number"]::placeholder {
 /* ==================== FOOTER INFO ==================== */
 
 .footer-info {
-    margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-lg);
+    margin-top: var(--spacing-xl, 35px);
+    padding-top: var(--spacing-lg, 25px);
     border-top: 1px solid rgba(0, 212, 255, 0.15);
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-sm, 10px);
     justify-content: center;
 }
 
 .info-badge {
     font-size: 11px;
     background: rgba(0, 212, 255, 0.08);
-    color: var(--rf-blue);
+    color: var(--rf-blue, #00d4ff);
     padding: 7px 14px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-lg, 16px);
     border: 1px solid rgba(0, 212, 255, 0.2);
     font-weight: 600;
     letter-spacing: 0.8px;
-    transition: all var(--anim-fast) var(--ease-standard);
+    transition: background var(--anim-fast, 0.3s) var(--ease-standard, ease),
+                transform var(--anim-fast, 0.3s) var(--ease-standard, ease),
+                box-shadow var(--anim-fast, 0.3s) var(--ease-standard, ease);
     text-transform: uppercase;
 }
 
