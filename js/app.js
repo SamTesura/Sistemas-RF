@@ -56,8 +56,12 @@ function validateInput(value) {
     return { valid: true, message: '✓ Input validated', value: num };
 }
 
+// NOTE: The following rate limiting implementation is CLIENT-SIDE ONLY.
+// It is intended solely for UI feedback and can be easily bypassed.
+// For effective rate limiting and security, SERVER-SIDE enforcement is required.
+
 /**
- * Rate limiting implementation
+ * Rate limiting implementation (UI feedback only)
  */
 function checkRateLimit() {
     const now = Date.now();

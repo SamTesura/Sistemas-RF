@@ -7,30 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self'; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
+    <!-- Note: X-Frame-Options should be set as HTTP response header on the server, not as meta tag -->
 
     <title>🔒 Secure RF Calculator | Cálculos Sistema Radio Frecuencia</title>
     <meta name="description" content="Secure Butterworth filter calculator with enterprise-grade security">
 
     <link rel="stylesheet" href="css/styles.css">
 
+    <!-- MathJax Configuration (must load before MathJax) -->
+    <script src="js/mathjax-config.js"></script>
+
     <!-- MathJax with SRI (Subresource Integrity) -->
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-            integrity="sha256-3Fdoa0sZOybckta3lFkX0LQIZnhBshBBL/DvJRyhYhM="
+            integrity="sha384-+6WzLiNb6AnDL8u5+53hB7KxqjUJXPjCgdxqiH0BHvYWq7F0TBLVSlnLrKChSCJ3"
             crossorigin="anonymous"></script>
-    <script>
-        MathJax = {
-          tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-          }
-        };
-    </script>
 
 </head>
 
@@ -79,6 +76,7 @@
                                        placeholder="Ingrese N (1-20)"
                                        min="1"
                                        max="20"
+                                       step="1"
                                        required
                                        autocomplete="off"
                                        aria-label="Número de elementos del filtro">
