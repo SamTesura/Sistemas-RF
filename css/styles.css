@@ -35,28 +35,25 @@
                     0 0 30px rgba(112, 0, 255, 0.3),
                     0 0 45px rgba(255, 0, 128, 0.2);
 
-    /* Spacing (for consistency) */
-    --spacing-xs: 8px;
-    --spacing-sm: 12px;
+    /* Spacing */
+    --spacing-sm: 10px;
     --spacing-md: 20px;
     --spacing-lg: 25px;
     --spacing-xl: 35px;
 
     /* Border Radius */
     --radius-sm: 10px;
-    --radius-md: 14px;
+    --radius-md: 12px;
     --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-xxl: 24px;
+    --radius-xl: 24px;
 
     /* Animation Durations */
-    --anim-fast: 0.3s;
-    --anim-medium: 0.4s;
-    --anim-slow: 0.6s;
+    --duration-fast: 0.3s;
+    --duration-normal: 0.6s;
+    --duration-slow: 0.8s;
 
-    /* Transition Easing */
-    --ease-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
-    --ease-standard: ease;
+    /* Transitions */
+    --transition-base: all 0.3s ease;
 }
 
 body {
@@ -79,6 +76,37 @@ body {
     z-index: -1;
     background: radial-gradient(ellipse at top, #141822 0%, #0a0e1a 100%);
     overflow: hidden;
+}
+
+/* SVG Gradient Stop Colors (moved from inline styles for CSP compliance) */
+.gradient1-start {
+    stop-color: #00d4ff;
+    stop-opacity: 1;
+}
+
+.gradient1-end {
+    stop-color: #0066ff;
+    stop-opacity: 1;
+}
+
+.gradient2-start {
+    stop-color: #7000ff;
+    stop-opacity: 1;
+}
+
+.gradient2-end {
+    stop-color: #00d4ff;
+    stop-opacity: 1;
+}
+
+.gradient3-start {
+    stop-color: #ff0080;
+    stop-opacity: 1;
+}
+
+.gradient3-end {
+    stop-color: #7000ff;
+    stop-opacity: 1;
 }
 
 .wave-container {
@@ -366,7 +394,7 @@ h1.large {
 .formula-box {
     background: rgba(0, 0, 0, 0.4);
     /* Fallback border for browsers that do not support border-image */
-    border: 2px solid var(--rf-purple);
+    border: 2px solid #8b5cf6;
     border-image: var(--gradient-rf);
     border-image-slice: 1;
     border-radius: var(--radius-lg);
@@ -779,7 +807,6 @@ input[type="number"]::placeholder {
 }
 
 /* Focus styles for keyboard navigation */
-/* Fallback for older browsers */
 input:focus,
 button:focus {
     outline: 2px solid var(--rf-blue);
@@ -787,15 +814,15 @@ button:focus {
 }
 
 /* Only show focus styles for keyboard navigation when supported */
-input:focus:not(:focus-visible),
-button:focus:not(:focus-visible) {
-    outline: none;
-}
-
 input:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--rf-blue);
     outline-offset: 2px;
+}
+
+input:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+    outline: none;
 }
 
 /* ==================== PRINT STYLES ==================== */
