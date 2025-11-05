@@ -23,34 +23,33 @@
     <!-- MathJax Configuration (must load before MathJax) -->
     <script src="js/mathjax-config.js"></script>
 
-    <!-- MathJax with SRI (Subresource Integrity) -->
+    <!-- MathJax from CDN -->
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-            integrity="sha384-+6WzLiNb6AnDL8u5+53hB7KxqjUJXPjCgdxqiH0BHvYWq7F0TBLVSlnLrKChSCJ3"
             crossorigin="anonymous"></script>
 
 </head>
 
 <body>
     <!-- Animated RF wave background -->
-    <div class="rf-background">
+    <div class="rf-background" aria-hidden="true">
         <div class="wave-container">
-            <svg class="wave-svg" viewBox="0 0 1200 300" preserveAspectRatio="none">
+            <svg class="wave-svg" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
                 <path class="wave-path wave1" d="M0,150 Q300,50 600,150 T1200,150 V300 H0 Z" fill="url(#gradient1)" opacity="0.3"/>
                 <path class="wave-path wave2" d="M0,150 Q300,250 600,150 T1200,150 V300 H0 Z" fill="url(#gradient2)" opacity="0.2"/>
                 <path class="wave-path wave3" d="M0,180 Q400,80 800,180 T1600,180 V300 H0 Z" fill="url(#gradient3)" opacity="0.15"/>
                 <defs>
                     <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#0066ff;stop-opacity:1" />
+                        <stop offset="0%" class="gradient1-start" />
+                        <stop offset="100%" class="gradient1-end" />
                     </linearGradient>
                     <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#7000ff;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                        <stop offset="0%" class="gradient2-start" />
+                        <stop offset="100%" class="gradient2-end" />
                     </linearGradient>
                     <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#ff0080;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#7000ff;stop-opacity:1" />
+                        <stop offset="0%" class="gradient3-start" />
+                        <stop offset="100%" class="gradient3-end" />
                     </linearGradient>
                 </defs>
             </svg>
@@ -64,8 +63,8 @@
         <div class="container" id="formula-1">
             <!-- RF Header -->
             <div class="rf-header">
-                <div class="signal-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="signal-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                         <path d="M2 17l10 5 10-5"/>
                         <path d="M2 12l10 5 10-5"/>
@@ -93,23 +92,25 @@
                                     <h2>Orden del Filtro (n)</h2>
                                     <span class="help-text">Número de elementos reactivos</span>
                                 </label>
-                                <input class="inputbox"
-                                       type="number"
-                                       id="n"
-                                       name="n"
-                                       placeholder="Ingrese N (1-20)"
-                                       min="1"
-                                       max="20"
-                                       step="1"
-                                       required
-                                       autocomplete="off"
-                                       aria-label="Número de elementos del filtro">
+                                <div class="input-wrapper">
+                                    <span class="input-icon" aria-hidden="true">n =</span>
+                                    <input class="inputbox"
+                                           type="number"
+                                           id="n"
+                                           name="n"
+                                           placeholder="Ingrese N (1-20)"
+                                           min="1"
+                                           max="20"
+                                           step="1"
+                                           required
+                                           autocomplete="off">
+                                </div>
                                 <span class="input-validation" id="inputValidation"></span>
                             </div>
 
                             <button type="submit" class="calc-button">
-                                <span class="button-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <span class="button-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <polyline points="9 11 12 14 22 4"></polyline>
                                         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                                     </svg>
@@ -119,7 +120,7 @@
 
                             <div class="result-container">
                                 <h3 class="result-header">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <polyline points="12 6 12 12 16 14"></polyline>
                                     </svg>
