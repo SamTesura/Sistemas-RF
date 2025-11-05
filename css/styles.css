@@ -1,6 +1,6 @@
 /**
- * Secure RF Calculator - Cybersecurity PhD Edition
- * Modern Dark Theme with Security Aesthetics
+ * RF Calculator - Professional Telecommunications Design
+ * For Electronic Engineers in Radio Frequency Systems
  */
 
 /* ==================== CSS RESET & GLOBAL ==================== */
@@ -12,31 +12,32 @@
 }
 
 :root {
-    /* Cybersecurity Color Palette */
-    --primary-dark: #0a0e27;
-    --secondary-dark: #131a35;
-    --accent-cyan: #00ffff;
-    --accent-blue: #0ea5e9;
-    --accent-purple: #8b5cf6;
-    --accent-green: #10b981;
-    --danger-red: #ef4444;
-    --warning-yellow: #f59e0b;
+    /* RF Engineering Color Palette */
+    --primary-dark: #0a0e1a;
+    --secondary-dark: #141822;
+    --rf-blue: #00d4ff;
+    --rf-purple: #7000ff;
+    --rf-pink: #ff0080;
+    --signal-cyan: #00ffff;
+    --accent-blue: #0066ff;
+    --success-green: #00ff88;
+    --warning-orange: #ff6b00;
 
     /* Gradients */
-    --gradient-cyber: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secure: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
-    --gradient-matrix: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 100%);
+    --gradient-rf: linear-gradient(135deg, #00d4ff 0%, #7000ff 50%, #ff0080 100%);
+    --gradient-wave: linear-gradient(180deg, rgba(0, 212, 255, 0.1) 0%, transparent 100%);
+    --gradient-card: linear-gradient(135deg, rgba(20, 24, 34, 0.95) 0%, rgba(20, 30, 48, 0.95) 100%);
 
     /* Shadows */
-    --shadow-glow: 0 0 20px rgba(0, 255, 255, 0.3);
-    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
-    --shadow-neon: 0 0 10px rgba(14, 165, 233, 0.5),
-                    0 0 20px rgba(14, 165, 233, 0.3),
-                    0 0 30px rgba(14, 165, 233, 0.2);
+    --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+    --shadow-card: 0 25px 50px rgba(0, 0, 0, 0.6);
+    --shadow-neon: 0 0 15px rgba(0, 212, 255, 0.5),
+                    0 0 30px rgba(112, 0, 255, 0.3),
+                    0 0 45px rgba(255, 0, 128, 0.2);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
     line-height: 1.6;
     background: var(--primary-dark);
     color: #ffffff;
@@ -44,79 +45,106 @@ body {
     min-height: 100vh;
 }
 
-/* ==================== ANIMATED BACKGROUND ==================== */
+/* ==================== RF WAVE BACKGROUND ==================== */
 
-.security-background {
+.rf-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: var(--gradient-matrix);
+    background: radial-gradient(ellipse at top, #141822 0%, #0a0e1a 100%);
     overflow: hidden;
 }
 
-.security-grid {
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+.wave-svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 300px;
+}
+
+.wave-path {
+    animation: waveFlow 8s ease-in-out infinite;
+}
+
+.wave1 {
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.wave2 {
+    animation-delay: -2s;
+    animation-duration: 15s;
+}
+
+.wave3 {
+    animation-delay: -4s;
+    animation-duration: 18s;
+}
+
+@keyframes waveFlow {
+    0%, 100% {
+        transform: translateX(0) scaleY(1);
+    }
+    25% {
+        transform: translateX(-5%) scaleY(1.1);
+    }
+    50% {
+        transform: translateX(-10%) scaleY(0.9);
+    }
+    75% {
+        transform: translateX(-5%) scaleY(1.05);
+    }
+}
+
+/* Circuit board pattern */
+.circuit-pattern {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image:
-        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridScroll 20s linear infinite;
+        radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 60% 70%, rgba(112, 0, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.03) 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px, 120px 120px;
+    animation: circuitFloat 30s linear infinite;
 }
 
-@keyframes gridScroll {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(50px); }
+@keyframes circuitFloat {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 100px 100px, -150px 150px, 120px -120px; }
 }
 
-/* ==================== SECURITY BADGE ==================== */
-
-.security-badge {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(10, 14, 39, 0.9);
-    border: 2px solid var(--accent-cyan);
-    border-radius: 25px;
-    padding: 10px 20px;
-    box-shadow: var(--shadow-glow);
-    z-index: 1000;
-    animation: pulse 2s ease-in-out infinite;
+/* Frequency grid */
+.frequency-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridPulse 4s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-.lock-icon {
-    width: 20px;
-    height: 20px;
-    stroke: var(--accent-cyan);
-    stroke-width: 2;
-    animation: lockGlow 2s ease-in-out infinite;
-}
-
-@keyframes lockGlow {
-    0%, 100% { filter: drop-shadow(0 0 5px var(--accent-cyan)); }
-    50% { filter: drop-shadow(0 0 15px var(--accent-cyan)); }
-}
-
-.security-text {
-    color: var(--accent-cyan);
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
 }
 
 /* ==================== MAIN WRAPPER ==================== */
@@ -149,14 +177,14 @@ body {
 /* ==================== MAIN CONTAINER ==================== */
 
 #formula-1 {
-    background: rgba(19, 26, 53, 0.95);
-    backdrop-filter: blur(10px);
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
     width: 100%;
-    max-width: 600px;
-    min-height: 500px;
-    padding: 40px;
-    border-radius: 20px;
-    border: 2px solid rgba(0, 255, 255, 0.3);
+    max-width: 700px;
+    min-height: 550px;
+    padding: 50px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
     box-shadow: var(--shadow-card), var(--shadow-neon);
     position: relative;
     overflow: hidden;
@@ -166,11 +194,11 @@ body {
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -183,10 +211,10 @@ body {
     height: 100%;
     background: linear-gradient(90deg,
         transparent,
-        rgba(0, 255, 255, 0.1),
+        rgba(0, 212, 255, 0.08),
         transparent
     );
-    animation: scan 3s ease-in-out infinite;
+    animation: scan 4s ease-in-out infinite;
 }
 
 @keyframes scan {
@@ -194,109 +222,219 @@ body {
     100% { left: 100%; }
 }
 
-/* ==================== SECURITY HEADER ==================== */
+#formula-1::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-rf);
+    border-radius: 24px;
+    z-index: -1;
+    opacity: 0.15;
+    animation: borderPulse 3s ease-in-out infinite;
+}
 
-.security-header {
+@keyframes borderPulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.3; }
+}
+
+/* ==================== RF HEADER ==================== */
+
+.rf-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+    position: relative;
 }
 
-.shield-icon {
-    font-size: 32px;
-    filter: drop-shadow(0 0 10px var(--accent-cyan));
-    animation: rotate 4s linear infinite;
+.rf-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 40%;
+    height: 1px;
+    background: var(--gradient-rf);
+    animation: lineExpand 2s ease-in-out infinite;
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+@keyframes lineExpand {
+    0%, 100% { width: 40%; }
+    50% { width: 60%; }
 }
 
-.encryption-badge {
-    font-size: 11px;
-    color: var(--accent-green);
-    background: rgba(16, 185, 129, 0.1);
-    padding: 8px 15px;
+.signal-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.signal-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--rf-blue);
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
+    animation: signalPulse 2s ease-in-out infinite;
+}
+
+@keyframes signalPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.title-badge {
+    font-size: 12px;
+    color: var(--rf-blue);
+    background: rgba(0, 212, 255, 0.1);
+    padding: 8px 18px;
     border-radius: 20px;
-    border: 1px solid var(--accent-green);
+    border: 1px solid rgba(0, 212, 255, 0.3);
     font-weight: 600;
-    letter-spacing: 0.5px;
-    animation: blink 2s ease-in-out infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* ==================== TYPOGRAPHY ==================== */
 
 h1.large {
-    font-size: 28px;
-    line-height: 1.3;
-    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 10px;
     text-align: center;
+    font-weight: 700;
 }
 
 .gradient-text {
-    background: var(--gradient-secure);
+    background: var(--gradient-rf);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 700;
-    text-shadow: none;
     display: inline-block;
-    animation: gradientShift 3s ease infinite;
+    animation: gradientShift 5s ease infinite;
 }
 
 @keyframes gradientShift {
-    0%, 100% { filter: hue-rotate(0deg); }
-    50% { filter: hue-rotate(20deg); }
+    0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+    50% { filter: hue-rotate(30deg) brightness(1.2); }
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 
 /* ==================== FORMULA BOX ==================== */
 
 .formula-box {
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid var(--accent-purple);
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid transparent;
+    border-image: var(--gradient-rf);
+    border-image-slice: 1;
+    border-radius: 16px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.15),
+                inset 0 0 20px rgba(0, 212, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.formula-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: var(--gradient-rf);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.7;
+}
+
+.formula-label {
+    font-size: 13px;
+    color: var(--rf-blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .latex {
-    font-size: 22px;
-    color: var(--accent-cyan);
+    font-size: 24px;
+    color: var(--signal-cyan);
     text-align: center;
     font-weight: 500;
+    position: relative;
+    z-index: 1;
 }
 
 /* ==================== FORM STYLING ==================== */
 
 .input-group {
-    margin: 30px 0;
+    margin: 35px 0;
 }
 
 form h2 {
     color: #ffffff;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     letter-spacing: 0.5px;
+}
+
+.help-text {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    margin-top: 4px;
+    margin-bottom: 15px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 20px;
+    font-size: 16px;
+    color: var(--rf-blue);
+    font-weight: 600;
+    pointer-events: none;
+    z-index: 1;
 }
 
 input[type="number"] {
     width: 100%;
-    font-size: 16px;
-    padding: 15px 20px;
-    border-radius: 10px;
-    border: 2px solid rgba(0, 255, 255, 0.3);
-    background: rgba(0, 0, 0, 0.4);
+    font-size: 18px;
+    padding: 16px 20px 16px 55px;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     color: #ffffff;
     transition: all 0.3s ease;
     font-weight: 500;
@@ -304,22 +442,23 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    border-color: var(--rf-blue);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
     transform: translateY(-2px);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 input[type="number"]::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 /* Input Validation Messages */
 .input-validation {
     display: none;
-    margin-top: 10px;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 14px;
+    margin-top: 12px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 13px;
     font-weight: 500;
     animation: slideDown 0.3s ease;
 }
@@ -336,15 +475,15 @@ input[type="number"]::placeholder {
 }
 
 .input-validation.error {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid var(--danger-red);
-    color: var(--danger-red);
+    background: rgba(255, 107, 0, 0.15);
+    border: 1px solid var(--warning-orange);
+    color: var(--warning-orange);
 }
 
 .input-validation.success {
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid var(--accent-green);
-    color: var(--accent-green);
+    background: rgba(0, 255, 136, 0.15);
+    border: 1px solid var(--success-green);
+    color: var(--success-green);
 }
 
 /* ==================== BUTTON STYLING ==================== */
@@ -354,18 +493,19 @@ input[type="number"]::placeholder {
     font-size: 18px;
     font-weight: 700;
     color: #ffffff;
-    background: var(--gradient-secure);
+    background: var(--gradient-rf);
     padding: 18px 35px;
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
-    margin: 20px 0;
+    margin: 25px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3),
+                0 0 40px rgba(112, 0, 255, 0.2);
     position: relative;
     overflow: hidden;
 }
@@ -379,10 +519,10 @@ input[type="number"]::placeholder {
     height: 100%;
     background: linear-gradient(90deg,
         transparent,
-        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.25),
         transparent
     );
-    transition: left 0.5s ease;
+    transition: left 0.6s ease;
 }
 
 .calc-button:hover::before {
@@ -390,55 +530,74 @@ input[type="number"]::placeholder {
 }
 
 .calc-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(14, 165, 233, 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 212, 255, 0.5),
+                0 0 50px rgba(112, 0, 255, 0.3);
 }
 
 .calc-button:active {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 .button-icon {
-    font-size: 20px;
+    width: 22px;
+    height: 22px;
+}
+
+.button-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
 }
 
 /* ==================== RESULTS SECTION ==================== */
 
 .result-container {
-    margin-top: 30px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
-    padding: 20px;
-    border: 2px solid rgba(0, 255, 255, 0.2);
+    margin-top: 35px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.05);
 }
 
 .result-header {
-    color: var(--accent-cyan);
-    font-size: 18px;
+    color: var(--rf-blue);
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-header svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--rf-blue);
 }
 
 .result-field {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 15px;
-    min-height: 60px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    min-height: 80px;
+    font-style: italic;
 }
 
 .result-item {
-    background: rgba(14, 165, 233, 0.1);
-    border-left: 4px solid var(--accent-blue);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(112, 0, 255, 0.08) 100%);
+    border-left: 3px solid var(--rf-blue);
+    padding: 16px 20px;
+    margin: 12px 0;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 15px;
     opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.3s ease;
+    transform: translateX(-30px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .result-item.show {
@@ -447,89 +606,139 @@ input[type="number"]::placeholder {
 }
 
 .result-item:hover {
-    background: rgba(14, 165, 233, 0.2);
-    border-left-color: var(--accent-cyan);
-    transform: translateX(5px);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(112, 0, 255, 0.15) 100%);
+    border-left-color: var(--rf-purple);
+    transform: translateX(8px);
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
 }
 
 .result-icon {
-    font-size: 24px;
-    filter: drop-shadow(0 0 5px var(--accent-cyan));
+    font-size: 26px;
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
 }
 
 .result-text {
     color: #ffffff;
     font-weight: 500;
     font-size: 16px;
+    font-family: 'Consolas', 'Monaco', monospace;
 }
 
-/* ==================== SECURITY FOOTER ==================== */
+/* ==================== FOOTER INFO ==================== */
 
-.security-footer {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px solid rgba(0, 255, 255, 0.2);
-}
-
-.security-info {
+.footer-info {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0, 212, 255, 0.15);
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
 }
 
-.info-item {
+.info-badge {
     font-size: 11px;
-    background: rgba(16, 185, 129, 0.1);
-    color: var(--accent-green);
-    padding: 6px 12px;
-    border-radius: 15px;
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background: rgba(0, 212, 255, 0.08);
+    color: var(--rf-blue);
+    padding: 7px 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     transition: all 0.3s ease;
+    text-transform: uppercase;
 }
 
-.info-item:hover {
-    background: rgba(16, 185, 129, 0.2);
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+.info-badge:hover {
+    background: rgba(0, 212, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */
 
 @media (max-width: 768px) {
-    .security-badge {
-        top: 10px;
-        right: 10px;
-        padding: 8px 15px;
-    }
-
-    .security-text {
-        font-size: 12px;
-    }
-
     #formula-1 {
-        padding: 30px 20px;
-        margin: 20px 10px;
+        padding: 35px 25px;
+        max-width: 95%;
     }
 
     h1.large {
-        font-size: 22px;
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .latex {
+        font-size: 20px;
+    }
+
+    .title-badge {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+
+    .signal-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .formula-box {
+        padding: 20px;
+    }
+
+    input[type="number"] {
+        font-size: 16px;
+        padding: 14px 18px 14px 50px;
+    }
+
+    .calc-button {
+        font-size: 16px;
+        padding: 16px 30px;
+    }
+
+    .result-text {
+        font-size: 14px;
+    }
+
+    .footer-info {
+        gap: 8px;
+    }
+
+    .info-badge {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-wrapper {
+        padding: 20px 10px;
+    }
+
+    #formula-1 {
+        padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    h1.large {
+        font-size: 24px;
+    }
+
+    .rf-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
     }
 
     .latex {
         font-size: 18px;
     }
 
-    .encryption-badge {
-        font-size: 9px;
-        padding: 6px 10px;
-    }
-
-    .security-info {
-        flex-direction: column;
-        align-items: center;
+    .wave-svg {
+        height: 200px;
     }
 }
 
@@ -545,16 +754,39 @@ input[type="number"]::placeholder {
     }
 }
 
+/* Focus styles for keyboard navigation */
+input:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--rf-blue);
+    outline-offset: 2px;
+}
+
 /* ==================== PRINT STYLES ==================== */
 
 @media print {
-    .security-background,
-    .security-badge {
+    .rf-background,
+    .wave-container,
+    .circuit-pattern,
+    .frequency-grid {
         display: none;
     }
 
     body {
         background: white;
         color: black;
+    }
+
+    #formula-1 {
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    #formula-1::before,
+    #formula-1::after {
+        display: none;
+    }
+
+    .calc-button {
+        display: none;
     }
 }

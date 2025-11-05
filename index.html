@@ -35,80 +35,115 @@
 </head>
 
 <body>
-    <!-- Background with animated security pattern -->
-    <div class="security-background">
-        <div class="security-grid"></div>
-    </div>
-
-    <!-- Security status indicator -->
-    <div class="security-badge">
-        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <rect x="5" y="11" width="14" height="10" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
-        <span class="security-text">Secure Connection</span>
+    <!-- Animated RF wave background -->
+    <div class="rf-background">
+        <div class="wave-container">
+            <svg class="wave-svg" viewBox="0 0 1200 300" preserveAspectRatio="none">
+                <path class="wave-path wave1" d="M0,150 Q300,50 600,150 T1200,150 V300 H0 Z" fill="url(#gradient1)" opacity="0.3"/>
+                <path class="wave-path wave2" d="M0,150 Q300,250 600,150 T1200,150 V300 H0 Z" fill="url(#gradient2)" opacity="0.2"/>
+                <path class="wave-path wave3" d="M0,180 Q400,80 800,180 T1600,180 V300 H0 Z" fill="url(#gradient3)" opacity="0.15"/>
+                <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0066ff;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#7000ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff0080;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#7000ff;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="circuit-pattern"></div>
+        <div class="frequency-grid"></div>
     </div>
 
     <!-- Main container -->
     <div class="main-wrapper">
         <div class="container" id="formula-1">
-            <div class="security-header">
-                <div class="shield-icon">🛡️</div>
-                <div class="encryption-badge">AES-256 | TLS 1.3 | CSP Active</div>
+            <!-- RF Header -->
+            <div class="rf-header">
+                <div class="signal-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="title-badge">Sistema de Radio Frecuencia</div>
             </div>
 
             <div class="row">
                 <div class="col-18">
                     <div class="firstFormula">
                         <h1 class="large">
-                            <span class="gradient-text">Cálculo Valores del Filtro Butterworth</span>
+                            <span class="gradient-text">Filtro Butterworth</span>
                         </h1>
+                        <p class="subtitle">Cálculo de Elementos Normalizados</p>
+
                         <div class="formula-box">
-                            <p class="latex">$2\sin{\frac{(2k-1)\pi}{2n}}, k=1,2,...n$</p>
+                            <div class="formula-label">Coeficientes g<sub>k</sub>:</div>
+                            <p class="latex">$g_k = 2\sin\left(\frac{(2k-1)\pi}{2n}\right), \quad k=1,2,\ldots,n$</p>
                         </div>
 
                         <form id="Butterworth">
                             <div class="input-group">
                                 <label for="n">
-                                    <h2>Número de elementos (n)</h2>
+                                    <h2>Orden del Filtro (n)</h2>
+                                    <span class="help-text">Número de elementos reactivos</span>
                                 </label>
-                                <input class="inputbox"
-                                       type="number"
-                                       id="n"
-                                       name="n"
-                                       placeholder="Ingrese N (1-20)"
-                                       min="1"
-                                       max="20"
-                                       required
-                                       autocomplete="off"
-                                       aria-label="Número de elementos del filtro">
+                                <div class="input-wrapper">
+                                    <span class="input-icon">n =</span>
+                                    <input class="inputbox"
+                                           type="number"
+                                           id="n"
+                                           name="n"
+                                           placeholder="1-20"
+                                           min="1"
+                                           max="20"
+                                           required
+                                           autocomplete="off"
+                                           aria-label="Número de elementos del filtro">
+                                </div>
                                 <span class="input-validation" id="inputValidation"></span>
                             </div>
 
                             <button type="submit" class="calc-button">
-                                <span class="button-icon">🔒</span>
-                                <span>Calcular Securely</span>
+                                <span class="button-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 11 12 14 22 4"></polyline>
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                    </svg>
+                                </span>
+                                <span>Calcular</span>
                             </button>
 
                             <div class="result-container">
-                                <h3 class="result-header">Resultados:</h3>
+                                <h3 class="result-header">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    Resultados
+                                </h3>
                                 <div id="resultField" class="result-field">
-                                    Esperando entrada segura...
+                                    Ingrese el orden del filtro para calcular los elementos...
                                 </div>
                             </div>
                         </form>
-
-                        <!-- Security info footer -->
-                        <div class="security-footer">
-                            <div class="security-info">
-                                <span class="info-item">✓ Input Sanitized</span>
-                                <span class="info-item">✓ XSS Protected</span>
-                                <span class="info-item">✓ CSRF Token</span>
-                                <span class="info-item">✓ Rate Limited</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Footer info -->
+            <div class="footer-info">
+                <span class="info-badge">Butterworth Response</span>
+                <span class="info-badge">Maximally Flat</span>
+                <span class="info-badge">All-Pole Filter</span>
             </div>
         </div>
     </div>

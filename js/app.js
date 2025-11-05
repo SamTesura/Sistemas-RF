@@ -188,22 +188,17 @@ form.addEventListener('submit', function(event) {
     // Render results securely
     renderResults(elements);
 
-    // Log for security audit (in production, send to SIEM)
-    console.log('[SECURITY AUDIT]', {
+    // Log calculation details
+    console.log('[BUTTERWORTH FILTER]', {
         timestamp: new Date().toISOString(),
-        action: 'CALCULATION_PERFORMED',
-        input: n,
+        order: n,
         elements: elements.length,
-        requestCount: requestHistory.length
+        coefficients: elements.map(e => e.value)
     });
 });
 
-// Initialize security indicators
+// Initialize application
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('[SECURITY] Application initialized with:');
-    console.log('  ✓ XSS Protection Active');
-    console.log('  ✓ Input Validation Enabled');
-    console.log('  ✓ Rate Limiting Active');
-    console.log('  ✓ CSP Headers Applied');
-    console.log(`  ✓ Max ${MAX_REQUESTS} requests per ${TIME_WINDOW/1000}s`);
+    console.log('[RF CALCULATOR] Butterworth Filter Calculator initialized');
+    console.log(`[INFO] Valid input range: ${MIN_INPUT}-${MAX_INPUT} elements`);
 });
