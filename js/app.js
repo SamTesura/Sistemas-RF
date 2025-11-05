@@ -203,6 +203,5 @@ form.addEventListener('submit', function(event) {
 
 // Initialize application
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('[RF CALCULATOR] Butterworth Filter Calculator initialized');
-    console.log(`[INFO] Valid input range: ${MIN_INPUT}-${MAX_INPUT} elements`);
+    // Butterworth Filter Calculator ready
 });
