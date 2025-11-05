@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'sha256-JLEjeN9e5dGsz5475WyRaoA4eQOdNPxDIeUhclnJDCE=' 'sha256-mQyxHEuwZJqpxCw3SLmc4YOySNKXunyu2Oiz1r3/wAE=' 'sha256-OCf+kv5Asiwp++8PIevKBYSgnNLNUZvxAp4a7wMLuKA=' 'sha256-UzyyBh9R0xjEmUfdGwqzvO2PURfkYs/itGO/O0AEHSo='; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-hashes' 'sha256-JLEjeN9e5dGsz5475WyRaoA4eQOdNPxDIeUhclnJDCE=' 'sha256-mQyxHEuwZJqpxCw3SLmc4YOySNKXunyu2Oiz1r3/wAE=' 'sha256-OCf+kv5Asiwp++8PIevKBYSgnNLNUZvxAp4a7wMLuKA=' 'sha256-UzyyBh9R0xjEmUfdGwqzvO2PURfkYs/itGO/O0AEHSo='; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="no-referrer">
@@ -18,10 +18,10 @@
     <title>🔒 Secure RF Calculator | Cálculos Sistema Radio Frecuencia</title>
     <meta name="description" content="Secure Butterworth filter calculator with enterprise-grade security">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=2">
 
     <!-- MathJax Configuration (must load before MathJax) -->
-    <script src="js/mathjax-config.js"></script>
+    <script src="js/mathjax-config.js?v=2"></script>
 
     <!-- MathJax from CDN -->
     <script id="MathJax-script" async
@@ -144,7 +144,7 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=2"></script>
 </body>
 
 </html>
