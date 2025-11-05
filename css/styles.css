@@ -78,6 +78,37 @@ body {
     overflow: hidden;
 }
 
+/* SVG Gradient Stop Colors (moved from inline styles for CSP compliance) */
+.gradient1-start {
+    stop-color: #00d4ff;
+    stop-opacity: 1;
+}
+
+.gradient1-end {
+    stop-color: #0066ff;
+    stop-opacity: 1;
+}
+
+.gradient2-start {
+    stop-color: #7000ff;
+    stop-opacity: 1;
+}
+
+.gradient2-end {
+    stop-color: #00d4ff;
+    stop-opacity: 1;
+}
+
+.gradient3-start {
+    stop-color: #ff0080;
+    stop-opacity: 1;
+}
+
+.gradient3-end {
+    stop-color: #7000ff;
+    stop-opacity: 1;
+}
+
 .wave-container {
     position: absolute;
     bottom: 0;
